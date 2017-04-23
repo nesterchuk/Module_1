@@ -9,7 +9,13 @@ public class FiveNumbersDemo {
         for (int i = 0; i < 5 ; ++i ){
             System.out.println("Enter number " + (i + 1) + ":");
             Scanner in = new Scanner(System.in);
-            putNumbers[i] = in.nextInt();
+            if(in.hasNextInt()){
+                putNumbers[i] = in.nextInt();
+            }
+            else {
+                System.out.println("Only integers");
+                i-=1;
+            }
         }
         FiveNumbers dataOfUser = new FiveNumbers(putNumbers);
         System.out.println("Initial array: " + dataOfUser.GetInitialNumbers());

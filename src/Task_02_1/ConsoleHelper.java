@@ -21,9 +21,8 @@ public class ConsoleHelper
                     System.out.println(array.toString());
                     break;
                 case "2":
-                    System.out.print("Enter value: ");
-                    String searchIndex =  array.search(ReadConsole.readInt());
-                    System.out.println(searchIndex.equals("") ? "no found" : "Index: " + searchIndex ) ;
+                    String searchIndex =  array.search(ReadConsole.readValue());
+                    System.out.println(searchIndex.equals("") ? "No found" : "Index: " + searchIndex ) ;
                     break;
                 default:
                     System.out.println("Select one of the menu items!");

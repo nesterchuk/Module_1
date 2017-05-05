@@ -7,33 +7,39 @@ public  class ReadConsole {
 
     public static int[] readArrayInt() {
         int lengthArray;
-        boolean ifRead = false;
-        while (true){
+        int[] inputArray;
+        while (true) {
+            Scanner in = new Scanner(System.in);
             System.out.print("Enter length of array: ");
-            Scanner in = new Scanner(System.in);
-            if (in.hasNextInt()){
-                lengthArray = in.nextInt();
-                break;
+            String inputString = in.next();
+            try {
+                Integer.parseInt(inputString);
+            } catch (Exception e) {
+                System.out.println(" You enter not an integer");
+                continue;
             }
-            System.out.println("Not an integer");
-        }
-        int[] inputArray = new int[lengthArray];
-
-        loop: while (true) {
-            System.out.print("Enter array: ");
-            Scanner in = new Scanner(System.in);
-            for (int i = 0; i < inputArray.length; ++i) {
-                if (in.hasNextInt()){
-                    inputArray[i] = in.nextInt();
-                }
-                else {
-                    System.out.println("Enter " + lengthArray + " integers");
-                    continue loop;
+            lengthArray = Integer.parseInt(inputString);
+            inputArray = new int[lengthArray];
+            int flag = 0;
+            while (flag != lengthArray){
+                in = new Scanner(System.in);
+                System.out.print("Enter array: ");
+                for (int i = 0; i < inputArray.length; ++i) {
+                    inputString = in.next();
+                    try {
+                        Integer.parseInt(inputString);
+                    } catch (Exception e) {
+                        flag = 0;
+                        System.out.println(" You enter not an integer");
+                        break;
+                    }
+                    inputArray[i] = Integer.parseInt(inputString);
+                    ++flag;
                 }
             }
-            return inputArray;
+            break;
         }
-
+        return inputArray;
     }
 
     public static String readSring() {
@@ -42,16 +48,20 @@ public  class ReadConsole {
     }
 
     public static int readValue() {
+        String inputString;
         while (true) {
             Scanner in = new Scanner(System.in);
             System.out.print("Enter value: ");
-            if (in.hasNextInt()) {
-                return in.nextInt();
-            } else {
-                System.out.println("Not an integer");
+            inputString = in.next();
+            try{
+                Integer.parseInt(inputString);
+            } catch (Exception e){
+                System.out.println(" You enter not an integer");
+                continue;
             }
-
+            break;
         }
+        return Integer.parseInt(inputString);
     }
 }
 
